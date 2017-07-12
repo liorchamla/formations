@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes contacts en HTML ou en JSON</title>
+    
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Baloo|Sansita');
+        * {
+            font-family: Baloo;
+        }
+        h1 {
+            font-family: Sansita;
+        }
+        
+        div.contact {
+            display: inline-block;
+            border: 1px solid black;
+            width: 220px;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gestion de mes contacts</h1>
+    </header>
+    <main>
+        <div id="contenu"></div>
+        <button id="load-html">Charger les contacts</button>
+        <button id="load-json">Charger le JSON</button> 
+    </main>
+    
+    <script type="text/javascript">
+        /**
+         * Lorsque l'utilisateur clique sur le bouton qui a l'identifiant load-html 
+         */
+        document.getElementById('load-html').onclick = function(){
+            // Je dois créer une variable qui contient un objet XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            // Je dois dire à xhr comment se comporter lorsque son readyState va changer
+            // Pour rappel : le readyState est un indicateur du stade de la requête
+            // - 0 : pas encore envoyé
+            // - 1 : on vient d'appeler la fonction open()
+            // - 2 : on vient d'appeler la fonction send()
+            // - 3 : le serveur a répondu, on est en train de télécharger sa réponse
+            // - 4 : la requête est terminée, j'ai accès à la réponse
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    var reponse =  xhr.responseText;
+                    document.getElementById('contenu').innerHTML = reponse;
+                }
+            }
+            
+            // J'ouvre la connexion à la page get-contacts-html.php en méthode GET
+            xhr.open('GET', 'get-contacts-html.php');
+            // J'envoie la requête HTTP
+            xhr.send();
+        }
+        /**
+         * Lorsque l'utilisateur clique sur le bouton qui a l'identifiant load-html 
+         */
+        document.getElementById('load-json').onclick = function(){
+            // Je dois créer une variable qui contient un objet XMLHttpRequest
+            var xhr = new XMLHttpRequest();
+            // Je dois dire à xhr comment se comporter lorsque son readyState va changer
+            // Pour rappel : le readyState est un indicateur du stade de la requête
+            // - 0 : pas encore envoyé
+            // - 1 : on vient d'appeler la fonction open()
+            // - 2 : on vient d'appeler la fonction send()
+            // - 3 : le serveur a répondu, on est en train de télécharger sa réponse
+            // - 4 : la requête est terminée, j'ai accès à la réponse
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    var reponse =  xhr.responseText;
+                    var contacts = JSON.parse(reponse);
+                    
+                    var html = "";
+                    for(var i = 0; i < contacts.length; i++){
+                        html = html + "<div class='contact'>" + contacts[i].firstName + " " + contacts[i].lastName + "</div>";    
+                    }
+                        
+                    document.getElementById('contenu').innerHTML = html;
+                }
+            }
+            
+            // J'ouvre la connexion à la page get-contacts-html.php en méthode GET
+            xhr.open('GET', 'get-contacts.php');
+            // J'envoie la requête HTTP
+            xhr.send();
+        }
+       
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Construction d'un Chat en AJAX</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Caramail !</h1>
+    </header>
+    
+    <div id="messages">
+        Ici, il y aura les messages !
+    </div>
+    
+    <form action="chat.php?action=write" id="post-message" method="post">
+        <input type="text" id="author" name="author" placeholder="Pseudo ...">
+        <input type="text" id="content" name="content" placeholder="Message ...">
+        <button type="submit">Envoyer !</button>
+    </form>
+    
+    <script>
+        // document.addEventListener('DOMContentLoaded', function(){
+            
+        // })
+        // Quand le document est entièrement chargé
+        $(document).ready(function(){
+            // J'appelle la fonction displayLastMessages()
+            displayLastMessages();
+            
+            window.setInterval(displayLastMessages, 3000);
+            
+            $('#post-message').submit(function(){
+                var author = $('#author').val();
+                var content = $('#content').val();
+                
+                $('#content').val('');
+                $('#content').focus();
+                
+                $.post('chat.php?action=write', {
+                    author: author, 
+                    content: content
+                }).done(function(reponse){
+                    displayLastMessages();
+                });
+                
+                return false;
+            })
+        });
+        
+        function displayLastMessages(){
+            // On appelle une URL et on récupère du JSON (un tableau d'objets Javascript)
+            $.getJSON('chat.php?action=list', function(messages){
+                $('#messages').empty();
+                for(i = 0; i < messages.length; i++){
+                    var message = messages[i];
+                    var html = '<div>' + message.moment + ' ' + message.author + ' : ' + message.content + '</div>';
+                    $('#messages').prepend(html);
+                }
+            })
+        }
+    </script>
+    
+</body>
+</html>

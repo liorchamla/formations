@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon application Météo</title>
+    <!-- Appel à jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Icones météo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" type="text/css" />
+    <!-- Typographies Google -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|Raleway" rel="stylesheet">
+    <!-- Styles perso -->
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+</head>
+<body>
+    <header>
+        <h1>Application de météo de oufs !</h1>
+    </header>
+    <main>
+        <form action="" id="weather-query">
+            <input type="text" id="ville" placeholder="Tapez une ville !"/>
+            <button type="submit">Charger !</button>
+        </form>
+        <div id="meteo">
+            <div id="temps">
+                <i class="wi wi-day-rain"></i>
+            </div>
+            <div id="temperature">
+                Aujourd'hui, il fait <span id="degres"></span> degrés !
+            </div>
+        </div>
+    </main>
+    <script>
+        // Mon code Javascript (avec l'aide de jQuery)
+        $('#weather-query').submit(function(){
+            var ville = $('#ville').val();
+            // Vérification de ce que la personne a tapé dans la ville !
+            if(ville == ""){
+                // La personne n'a rien tapé, il y a donc une erreur
+                $('#ville').addClass('error');
+            } else {
+                // La personne a tapé une ville et on procède ..
+                $('#ville').removeClass('error');
+                
+                $.getJSON('http://api.openweathermap.org/data/2.5/weather?q='+ ville +'&appid=8e602b9ea28ed4f9f8fc97a5f6d1105c&units=metric', function(reponse){
+                   
+                   // Je récupère la température qu'il fait
+                   var temperature =  reponse.main.temp;
+                   // Je récupère le temps qu'il fait
+                   var temps = reponse.weather[0].main;
+                   
+                   $('#temperature span').html(temperature);
+                   
+                   $('#temps i').removeClass();
+                   
+                   switch(temps){
+                        case 'Rain':
+                            $('#temps i').addClass('wi wi-day-rain');
+                            break;
+                        case 'Clouds':
+                            $('#temps i').addClass('wi wi-day-cloudy');
+                            break;
+                        case 'Clear':
+                            $('#temps i').addClass('wi wi-day-sunny');
+                            break;
+                        case 'Snow':
+                            $('#temps i').addClass('wi wi-day-snow');
+                            break;
+                        case 'Mist':
+                        case 'Fog':
+                            $('#temps i').addClass('wi wi-day-fog');
+                            break;
+                        case 'Drizzle':
+                            $('#temps i').addClass('wi wi-day-sleet');
+                            break;
+                        
+                   }
+                   
+                });
+            }
+            return false;
+        });
+    </script>
+</body>
+</html>

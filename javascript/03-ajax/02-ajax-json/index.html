@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon magasin</title>
+    <style type="text/css">
+        div.client {
+            border:1px solid grey;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            
+            transition: all 250ms;
+        }
+        
+        div.client:hover {
+            background-color: rgba(0,0,0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mon magasin !</h1>
+    </header>
+    <main>
+        <div id="contenu">
+        </div>
+        
+        <a href="#!" id="btn-load" class="button">
+            Récupérer la liste des clients !
+        </a>
+    </main>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+
+        document.getElementById('btn-load').onclick = function(){
+            /**
+             * Créons un objet de type XMLHttpRequest();
+             */
+            // var xhr = new XMLHttpRequest();
+            
+            // xhr.onreadystatechange = function(){
+            //     if(xhr.readyState == 4){
+            //         // Je lis le JSON (parse) de la réponse (xhr.responseText) et je le stock dans clients
+            //         var clients = JSON.parse(xhr.responseText);
+                    
+            //         document.getElementById('contenu').innerHTML = '';
+                    
+            //         for(i = 0; i < clients.length; i++){
+            //             var client = clients[i];
+            //             var html = '<div class="client">'+ client.firstName + ' ' + client.lastName + ' ('+ client.chiffreAffaire +')</div>';
+            //             document.getElementById('contenu').innerHTML += html;
+            //         }
+            //         // document.getElementById('contenu').innerHTML = reponse;
+            //     }
+            // }
+            
+            /**
+             * On explique que l'on veut ouvrir en GET l'url https://liorchamla-wf3-ajax.c9.io/ajax-1/clients.php
+             */
+            // xhr.open('GET', 'clients.php');
+            
+            // xhr.send();
+            
+            // $.ajax({
+            //     url: 'clients.php',
+            //     dataType: 'json'
+            // }).done(function(clients){
+            //     $(clients).each(function(index, client){
+            //         var html = '<div class="client">'+client.firstName + ' ' + client.lastName +'</div>';
+            //         $('#contenu').append(html);
+            //     })
+            // });
+            
+            $.getJSON('clients.php', function(clients){
+                console.log(clients);
+                $(clients).each(function(index, client){
+                    var html = '<div class="client">'+client.firstName + ' ' + client.lastName +'</div>';
+                    $('#contenu').append(html);
+                })
+            })
+            
+        }
+        
+    </script>
+</body>
+</html>

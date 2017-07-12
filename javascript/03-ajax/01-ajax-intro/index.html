@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon magasin</title>
+</head>
+<body>
+    <header>
+        <h1>Mon magasin !</h1>
+    </header>
+    <main>
+        <div id="contenu">
+            Ici, il y aura les clients
+        </div>
+        
+        <a href="#!" id="btn-load" class="button">
+            Récupérer la liste des clients !
+        </a>
+    </main>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        
+        document.getElementById('btn-load').onclick = function(){
+            /**
+             * Créons un objet de type XMLHttpRequest();
+             */
+            // var xhr = new XMLHttpRequest();
+            // var reponse;
+            
+            // xhr.onreadystatechange = function(){
+            //     if(xhr.readyState === 4 && xhr.status === 200) {
+            //         reponse = xhr.responseText;
+            //         console.log(xhr);
+            //         document.getElementById('contenu').innerHTML = reponse;
+            //     }
+            // }
+            
+            // /**
+            //  * On explique que l'on veut ouvrir en GET l'url https://liorchamla-wf3-xhr.c9.io/xhr-1/clients.php
+            //  */
+            // xhr.open('GET', 'clients.php');
+            // xhr.send();
+
+            $.get('clients.php', function(reponse){
+                $('#contenu').html(reponse);
+            });
+            
+        }
+        
+    </script>
+</body>
+</html>

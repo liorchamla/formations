@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat WF3</title>
+    
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Baloo|Roboto');
+
+        * {
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: Roboto;
+        }
+        
+        h1, span.time, span.author {
+            font-family: Baloo;
+        }
+        
+        body {
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        #chat-logs {
+            height: 400px;
+            overflow: auto;
+            background-color: lavender;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        #chat-logs .message {
+            margin-bottom: 10px;
+        }
+        
+        input, button {
+            padding: 10px 5px;
+        }
+        
+        #author {
+            width: 20%;
+        }
+        #message {
+            width: 60%;
+        }
+        #chat-form button {
+            width: 15%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue dans notre super chat !</h1>
+    </header>
+    <main>
+        <div id="chat-logs">
+        </div>
+        <div id="chat-controls">
+            <form action="#" id="chat-form">
+                <input type="text" id="author" placeholder="Votre pseudo !" />
+                <input type="text" id="message" placeholder="Votre message ?"/>
+                <button type="submit">Envoyer</button>    
+            </form>
+        </div>
+    </main>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        // dès que la page est prête
+        $(document).ready(function(){
+            // on charge les derniers messages
+            loadChatLogs();
+            // on fait en sorte que les derniers messages se rechargent automatiquement toutes les 3 secondes
+            window.setInterval(loadChatLogs, 3000);
+        });
+        
+        // si quelqu'un soumet le formulaire de chat
+        $('#chat-form').submit(function(){
+            // on récupère dans un objet qu'on appelle data les données du formulaire
+            var donneesAEnvoyerAuPHP = {
+              // author sera égal à la valeur de l'input qui a l'identifiant "author"
+              author: $('#author').val(),
+              // message sera égal à la valeur de l'input qui a l'identifiant "message"
+              message: $('#message').val()
+            };
+            
+            // j'appelle en méthode POST l'adresse de mon script PHP en précisant que la tâche à accomplir
+            // sera postMessage
+            $.post('chat.php?task=postMessage', donneesAEnvoyerAuPHP).done(function(resultat){
+                loadChatLogs();
+                $('#message').val('');
+                $('#message').focus();
+            });
+            
+            // On return false, pour que le formulaire ne se soumette pas !
+            return false;
+        })
+        
+        /**
+         * Cette fonction sert à afficher mes messages
+         */
+        function loadChatLogs(){
+            // On appelle en JSON l'adresse chat.php
+            $.getJSON('chat.php', function(messages){
+                // On vide la zone des messages (pour la rafraichir)
+                $('#chat-logs').html('');
+                // Pour chaque message reçu
+                $(messages).each(function(i, message){
+                    // On créé une div qui a la classe message
+                    var div = '<div class="message">';
+                    // a l'intérieur de la div, on créé un span qui a la classe time et qui contient l'heure, minute et seconde
+                    div += '<span class="time">' + message.moment.substring(10) + '</span> ';
+                    // a l'intérieur de la div encore, on créé un span qui a la classe author et qui contient l'auteur du message
+                    div += '<span class="author">' + message.author + ' : </span> ';
+                    // a l'intérieur de la div enfin, on ajoute le contenu du message
+                    div += message.content;
+                    // on n'oublie pas de fermer la div
+                    div += '</div>';
+                    // on ajoute la div à l'intérieur de la grande div #chat-logs
+                    $('#chat-logs').prepend(div);
+                });
+                
+                // On oblige le scroll de la div #chat-logs a aller tout en bas
+                $('#chat-logs').scrollTop($('#chat-logs').height());
+            }).fail(function(erreur){
+                console.error(erreur);
+            })
+        }
+    </script>
+</body>
+</html>

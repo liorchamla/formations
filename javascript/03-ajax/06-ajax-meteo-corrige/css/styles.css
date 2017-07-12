@@ -1,0 +1,33 @@
+* {
+    font-family: Raleway;
+}
+
+h1 {
+    font-family: Merriweather;
+    margin-top: 100px;
+}
+
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+button {
+    background-color: navy;
+    border: 2px solid blue;
+    color: white;
+}
+
+input, button {
+    padding: 10px;
+}
+
+#temps i {
+    font-size: 4em;
+    line-height: 2em;
+}
