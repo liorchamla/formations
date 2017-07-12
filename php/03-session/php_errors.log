@@ -1,0 +1,18 @@
+[28-Feb-2017 08:11:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/01-session/05-panier/index.php on line 31
+[28-Feb-2017 08:11:41 UTC] PHP Stack trace:
+[28-Feb-2017 08:11:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/01-session/05-panier/index.php:0
+[28-Feb-2017 08:12:36 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/01-session/05-panier/index.php on line 31
+[28-Feb-2017 08:12:36 UTC] PHP Stack trace:
+[28-Feb-2017 08:12:36 UTC] PHP   1. {main}() /home/ubuntu/workspace/01-session/05-panier/index.php:0
+[28-Feb-2017 08:19:00 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/01-session/05-panier/index.php on line 31
+[28-Feb-2017 08:19:00 UTC] PHP Stack trace:
+[28-Feb-2017 08:19:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/01-session/05-panier/index.php:0
+[28-Feb-2017 08:23:27 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/01-session/05-panier/index.php on line 31
+[28-Feb-2017 08:23:27 UTC] PHP Stack trace:
+[28-Feb-2017 08:23:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/01-session/05-panier/index.php:0
+[28-Feb-2017 10:10:22 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/01-session/05-panier/index.php on line 31
+[28-Feb-2017 10:10:22 UTC] PHP Stack trace:
+[28-Feb-2017 10:10:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/01-session/05-panier/index.php:0
+[28-Feb-2017 13:10:17 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/01-session/05-panier/index.php on line 31
+[28-Feb-2017 13:10:17 UTC] PHP Stack trace:
+[28-Feb-2017 13:10:17 UTC] PHP   1. {main}() /home/ubuntu/workspace/01-session/05-panier/index.php:0

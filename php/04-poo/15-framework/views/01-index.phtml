@@ -1,0 +1,8 @@
+<h1>Liste des articles</h1>
+<?php foreach($articles as $article) : ?>
+	<article>
+		<h2><?= $article['titre'] ?></h2>
+		<p><?= substr($article['contenu'], 0, 150) ?></p>
+		<a href="index.php?task=lire&article=<?= $article['id'] ?>">Lire la suite ...</a>
+	</article>
+<?php endforeach; ?>

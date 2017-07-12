@@ -1,0 +1,11 @@
+Nous allons voir comment créer un semblant de Framework MVC.
+
+Le but est simple : vous avez plusieurs fichiers qui sont déjà entièrement remplis et où il n'y a rien d'autre à faire qu'à lire. Ces fichiers sont :
+- index.php
+- l'ensemble des vues .phtml dans le dossier views
+D'autres fichiers sont entièrement à remplir (et attention, c'est pas de la rigolade, c'est de la vraie programmation orientée objet PHP, vous commencez à vraiment être des "pros"). Ces fichiers sont :
+- 01-Model.php
+- 02-ArticlesModel.php
+- 03-ArticlesController.php
+
+Si vous arrivez à faire apparaitre un blog cohérent et qui fonctionne (pour l'instant nous nous concentrons sur l'affichage de la liste des articles ou un seul article) ce sera déjà super et vous serez prêts à étudier lors de ma prochaine venue au projet de site pour un restaurant (LA ENCORE, C'EST PAS DE LA TARTE ! Donc préparez vous bien !)
