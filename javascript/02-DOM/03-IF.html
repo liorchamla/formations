@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Réservation d'une table</title>
+</head>
+<body>
+    <header>
+        <h1>Vous souhaitez réserver une table ?</h1>
+        <p>Attention, vous ne pouvez réserver que entre 19h inclus et 22h inclus</p>
+    </header>
+    <main>
+        <form action="#" id="reservation">
+            <label for="heure">Entrez l'heure de réservation : </label>
+            <input type="text" id="heure" placeholder="Entrez un nombre pour l'heure">
+            <button type="submit">Réserver !</button>
+        </form>
+        <div id="resultat"></div>
+    </main>
+    <script type="text/javascript">
+        /**
+         * Nous voulons vérifier que la réservation est bien valide 
+         */
+         // 1) Branchez une fonction sur le submit du formulaire
+            
+            // 2) Récupérez dans une variable heureReservation l'heure qu'a tapé l'utilisateur
+            
+            // 3) Transformez l'heure en nombre grâce à la fonction Number()
+            
+            // 4) Faites une condition qui regarde si l'heure est bien supérieure ou égale à 19
+            
+                // 4.1) Si c'est le cas, faites une nouvelle condition qui regarde que l'heure soit bien inférieure ou égale à 22
+                
+                    // 4.2) Affichez dans la div qui a l'identifiant 'resultat' que tout va bien !
+                    
+            // 5) Sinon, affichez dans la div qui a l'identifiant 'resultat' que l'heure n'est pas bonne
+         
+            // 6) On n'oublie pas que pour ne pas que le formulaire parte vers sa véritable action
+            // Il faut return false !
+         
+    </script>
+</body>
+</html>

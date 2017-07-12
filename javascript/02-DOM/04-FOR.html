@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compter jusqu'à 10 ?!</title>
+</head>
+<body>
+    <header>
+        <h1>Compter jusqu'à 10 ?!</h1>
+    </header>
+    <main>
+        <button id="compter">Compter !</button>    
+        <div id="resultat"></div>
+    </main>
+    <script type="text/javascript">
+        /**
+         * Nous allons faire un script tout bête pour comprendre la notion de BOUCLE FOR
+         * Il va tout simplement compter de 0 jusqu'à 9 (donc 10 fois) et afficher le résulat dans la div
+         * qui a l'identifiant 'resultat'
+         */
+        // On rattache un fonction sur le click (onclick) du bouton qui a l'identifiant 'compter'
+        document.getElementById('compter').onclick = function(){
+            // Faisons une boucle qui part de 0 et qui continue tant qu'on n'est pas arrivé à 10
+            var nombre;
+            // Commençons avec un nombre qui sera 0
+            // Tant que le nombre est inférieur à 10, on fait l'action qui est décrite dans la boucle
+            // Après chaque fois que l'action décrite dans la boucle est faite, on finit par ajouter 1 au nombre (nombre++)
+            for(nombre = 0; nombre < 10; nombre++){
+                // Créons une variable nombreAffiche qui sera égal au nombre auquel on ajoute 1
+                // Si nombre est égal à 0, le nombre que l'on souhaite afficher est en fait 1
+                // Si nombre est égal à 9, le nombre que l'on souhaite afficher est en fait 10, etc
+                var nombreAffiche = nombre + 1;
+                // Affichons dans la div qui a l'identifiant 'resultat' le nombre 
+                document.getElementById('resultat').innerHTML += '<br>Le nombre est  : ' + nombreAffiche;
+            }
+        }
+    </script>
+</body>
+</html>

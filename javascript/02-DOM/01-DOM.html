@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprendre le DOM avec Javascript</title>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice de TVA</h1>
+    </header>
+    <main>
+        <form action="#" id="calcul-tva">
+            <label for="montant">Entrez votre montant HT : </label>
+            <input type="text" id="montant" placeholder="Montant HT"/>
+            <button type="submit">Calculer la TVA</button>
+        </form>
+        <div id="resultat"></div>
+    </main>
+    <script type="text/javascript">
+        /**
+         * A VOUS ! En vous inspirant du script précédent,
+         * faites un calcul qui montrera à l'utilisateur quel montant de TVA il devra payer
+         * et combien fera le montant TTC (le tout à partir du montant HT qu'il a fourni)
+         */
+         
+         // 1) Branchez une fonction sur le submit du formulaire qui a l'identifiant 'calcul-tva'
+                
+             // 2) Récupérez dans une variable 'montant' la valeur du champ qui a l'identifiant montant 
+             
+             // 3) Attention, la variable montant ne contient pas réellement un nombre, mais une
+             // chaine de caractères qui contient un nombre, il faut donc le transformer avec la focntion
+             // Number()
+             
+             // 4) Calculez dans une variable montantTVA le montant de la TVA
+             
+             // 5) Calculez dans une variable montantTTC le montant HT + le montant TVA
+             
+             // 6) Affichons le résultat de toutes ces opérations dans la div qui a l'identifiant "resultat"
+
+             
+             // 7) Attention, si l'on ne souhaite pas que le formulaire parte réellement
+             // vers son "action", il faut return false !
+             
+        
+    </script>
+</body>
+</html>

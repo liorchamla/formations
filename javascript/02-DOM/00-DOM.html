@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprendre le DOM avec Javascript</title>
+</head>
+<body>
+    <header>
+        <h1>Calculatrice de TVA</h1>
+    </header>
+    <main>
+        <form action="#" id="calcul-tva">
+            <label for="montant">Entrez votre montant HT : </label>
+            <input type="text" id="montant" placeholder="Montant HT"/>
+            <button type="submit">Calculer la TVA</button>
+        </form>
+        <div id="resultat"></div>
+    </main>
+    <script type="text/javascript">
+        /**
+         * Ecrivons un script Javascript qui va permettre de faire le calcul de la TVA en prenant le montant
+         * qui a été donné par l'utilisateur dans le champ dont l'identifiant est montant
+         * Ce calcul se fait au moment où le formulaire qui a l'identifiant "calcul-tva" est soumis (onsubmit)
+         */
+         
+         // Sélectionnons le formulaire qui a l'identifiant calcul-tva et branchons une fonction sur le moment
+         // où il est soumis (onsubmit)
+         document.getElementById('calcul-tva').onsubmit = function(){
+             // Ceci est la fonction qui sera exécutée lorsque le formulaire sera soumis (onsubmit)
+             // on peut coder ce que l'on veut dedans !
+             // Dans un premier temps, récupérons la valeur qui se trouve dans le champ qui a l'id "montant"
+             // dans une variable que l'on va appeler montant
+             var montant = document.getElementById('montant').value;
+             // Attention, le montant récupéré dans le champ n'est pas réellement un nombre, c'est une chaine de caractère
+             // qui contient un nombre. Il faudra donc le transformer en vrai nombre grâce à la fonction Number() 
+             montant = Number(montant); // Transformation de montant en vrai nombre et restockage dans la montant
+             // Faisons maintenant le calcul de TVA (20% du montant)
+             var montantTVA = montant * 20 / 100; // montant * 20%
+             // Et maintenant affichons dans la div qui a l'identifiant 'resultat' le résultat de l'opération :
+             document.getElementById('resultat').innerHTML =  'Le montant de la TVA à payer est : ' + montantTVA + ' €';
+             
+             // Attention, si l'on ne souhaite pas que le formulaire parte réellement
+             // vers son "action", il faut return false !
+             return false;
+         }
+        
+    </script>
+</body>
+</html>

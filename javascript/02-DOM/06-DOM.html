@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sélection d'éléments !</title>
+</head>
+<body>
+    <header>
+        <h1>Sélectionnons des éléments !</h1>
+        <button id="mettre-rouge">Mettre tous en rouge</button>
+        <button id="un-seul">Mettre le p choisi en bleu</button>
+    </header>
+    <main>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, placeat!</p>
+        <p id="choisi">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, placeat!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, placeat!</p>
+    </main>
+    <script type="text/javascript">
+        /**
+         * Créons un script qui va sélectionner les paragraphes et changer leur apparence
+         * Pour ce faire, on va utiliser une autre méthode que le document.getElementById :
+         * Utilisons document.querySelector(). Cette fonction prend en paramètre un SELECTEUR CSS
+         * Pour mieux connaitre les sélecteurs CSS, voyez l'exercice CSS Diner ici : https://flukeout.github.io/
+         */
+        // Attachons un comportement au clic sur bouton qui a l'identifiant "mettre-rouge"
+        document.querySelector('#mettre-rouge').onclick = function(){
+            // On va récupérer tous les <p> dans un tableau grâce à document.querySelectorAll()
+            // Comme son compère document.querySelector() utilisé ci-dessus
+            // document.querySelectorAll() prend en paramètre un sélecteur CSS et nous renvoi tous les éléments qui 
+            // correspondent à ce sélecteur, sous la forme d'un tableau qui contient plusieurs éléménts
+            var tableauParagraphes = document.querySelectorAll('p');
+            // Nous allons faire une boucle FOR pour parcourir le tableau des paragraphes
+            for(var index = 0; index < tableauParagraphes.length; index++){
+                // Nous voulons changer la couleur du paragraphe
+                var paragraphe =  tableauParagraphes[index];
+                // La variable paragraphe contient le paragraphe qui se trouve dans le tableauParagraphes
+                // dans la case qui a pour numéro la valeur de l'index (0, 1, puis 2, puis 3, etc)
+                // Demandons au paragraphe de changer le style 
+                paragraphe.style.color = 'red';
+                // Et voilà, ils sont tous rouges !
+            }
+        }
+        
+        // Attachons un comportement au clic sur le bouton qui a l'identifiant "un-seul"
+        document.querySelector('#un-seul').onclick = function(){
+            // On va récupérer le <p> qui a l'identifiant "choisi" pour le mettre en bleu
+            document.querySelector('#choisi').style.color = 'blue';
+        }
+        /**
+         * Et voilà, vous connaissez trois nouvelles choses :
+         * la fonction document.querySelector() qui prend en paramètre un selecteur css et vous renvoie le premier élément qui correspond
+         * la fonction document.querySelectorAll() qui prend en paramètre un selecteur css et qui vous renvoie tous les éléments qui correspondent
+         * le fait d'accéder aux styles d'un élément grâce à .style
+         */
+    </script>
+</body>
+</html>

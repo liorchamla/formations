@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Réservation d'une table</title>
+</head>
+<body>
+    <header>
+        <h1>Vous souhaitez réserver une table ?</h1>
+        <p>Attention, vous ne pouvez réserver que après 19h inclus</p>
+    </header>
+    <main>
+        <form action="#" id="reservation">
+            <label for="heure">Entrez l'heure de réservation : </label>
+            <input type="text" id="heure" placeholder="Entrez un nombre pour l'heure">
+            <button type="submit">Réserver !</button>
+        </form>
+        <div id="resultat"></div>
+    </main>
+    <script type="text/javascript">
+        /**
+         * Nous voulons vérifier que la réservation est bien valide (en dessus de 19 inclus)
+         */
+         // On branche une fonction sur le submit du formulaire
+         document.getElementById('reservation').onsubmit = function(){
+             // On veut récupérer l'heure qui a été entrée par l'utilisateur
+             var heureReservation = document.getElementById('heure').value;
+             // Attention, la valeur récupérée dans le champs n'est pas un nombre
+             // C'est une chaine de caractères qui contient un nombre, on va donc la transformer
+             heureReservation = Number(heureReservation);
+             // Il faut maintenant créer une condition :
+             // SI L'HEURE EST SUPERIEUR OU EGALE A 19, ON EST BONS
+             if(heureReservation >= 19){
+                 // On écrit dans la div qui a l'identifiant 'resultat' que tout est ok
+                 document.getElementById('resultat').innerHTML = 'Votre table a bien été réservée pour ' + heureReservation + 'h';
+             } 
+             // SINON, CE N'EST PAS BON !
+             else {
+                 // On écrit dans la div qui a l'identifiant 'resultat' que ce n'est pas bon !
+                 document.getElementById('resultat').innerHTML =
+                 'Vous ne pouvez pas réserver pour ' + heureReservation + 'h, vous devez réserver à partir de 19h !';
+             }
+             
+             // On n'oublie pas que pour ne pas que le formulaire parte vers sa véritable action
+             // Il faut return false !
+             return false;
+         }
+    </script>
+</body>
+</html>
