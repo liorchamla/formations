@@ -16,5 +16,11 @@
         "espece": "rat",
         "couleur": "noir",
         "repasPreferes": ["emmental"]
+    },
+    {
+        "nom": "Pony",
+        "espece": "licorne",
+        "couleur": "blanche",
+        "repasPreferes": ["gateaux"]
     }
 ]
