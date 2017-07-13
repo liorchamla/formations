@@ -1,0 +1,20 @@
+[
+    {
+        "nom": "Kitty",
+        "espece": "chat",
+        "couleur": "marron",
+        "repasPreferes": ["thon", "saumon", "souris"]
+    },
+    {
+        "nom": "Bull",
+        "espece": "chien",
+        "couleur": "blanc",
+        "repasPreferes": ["viande", "os"]
+    },
+    {
+        "nom": "Mickey",
+        "espece": "rat",
+        "couleur": "noir",
+        "repasPreferes": ["emmental"]
+    }
+]
