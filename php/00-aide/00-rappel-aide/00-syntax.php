@@ -61,7 +61,7 @@ foreach($tableau as $element){
 
 // Boucle foreach avec clés 
 foreach($tableau as $key => $element){
-	// Pour chaque coupe $key => $element du tableau ($key est la clé en cours, $element est l'élément en cours)
+	// Pour chaque couple $key => $element du tableau ($key est la clé en cours, $element est l'élément en cours)
 }
 
 // Boucle while
